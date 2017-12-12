@@ -17,10 +17,16 @@ namespace TechJobs.Data
         public JobFieldData<PositionType> PositionTypes { get; set; } = new JobFieldData<PositionType>();
         public JobFieldData<CoreCompetency> CoreCompetencies { get; set; } = new JobFieldData<CoreCompetency>();
 
+        private static List<Employer> employers = new List<Employer>();
 
         private JobData()
         {
             JobDataImporter.LoadData(this);
+        }
+
+        public static Employer GetEmployerById(int id)
+        {
+            return employers.Find(Employer => Employer.ID== id);
         }
 
         private static JobData instance;
